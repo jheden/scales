@@ -1,4 +1,86 @@
-const instruments =  {
+const chords = [
+  {
+    'name': 'Triads',
+    'chords': [
+      {
+        'name': 'Major',
+        'spelling': 'R-M3-P5',
+      },
+      {
+        'name': 'Minor',
+        'spelling': 'R-m3-P5',
+      },
+      {
+        'name': 'Augmented',
+        'spelling': 'R-M3-A5',
+      },
+      {
+        'name': 'Diminished',
+        'spelling': 'R-m3-d5',
+      },
+    ],
+  },
+  {
+    'name': 'Seventh',
+    'chords': [
+      {
+        'name': 'Dominant',
+        'spelling': 'R-M3-P5-m7',
+      },
+      {
+        'name': 'Major',
+        'spelling': 'R-M3-P5-M7',
+      },
+      {
+        'name': 'Minor-major',
+        'spelling': 'R-m3-P5-M7',
+      },
+      {
+        'name': 'Minor',
+        'spelling': 'R-m3-P5-m7',
+      },
+      {
+        'name': 'Augmented-major',
+        'spelling': 'R-M3-A5-M7',
+      },
+      {
+        'name': 'Augmented',
+        'spelling': 'R-M3-A5-m7',
+      },
+      {
+        'name': 'Half-diminished',
+        'spelling': 'R-m3-d5-m7',
+      },
+      {
+        'name': 'Diminished',
+        'spelling': 'R-m3-d5-d7',
+      },
+      {
+        'name': 'Flat five',
+        'spelling': 'R-M3-d5-m7',
+      },
+    ],
+  },
+  {
+    'name': 'Suspended',
+    'chords': [
+      {
+        'name': 'sus4',
+        'spelling': 'R-P4-P5',
+      },
+      {
+        'name': 'sus2',
+        'spelling': 'R-M2-P5',
+      },
+      {
+        'name': '7sus4',
+        'spelling': 'R-P4-P5-m7',
+      },
+    ],
+  },
+];
+
+const instruments = {
   'Bass': {
     'frets': 25,
     'tunings': {
@@ -48,87 +130,6 @@ const instruments =  {
   },
 };
 
-const intervals = {
-    'P1': 0,
-    'd2': 0,
-
-    'm2': 1,
-    'A1': 1,
-
-    'M2': 2,
-    'd3': 2,
-
-    'm3': 3,
-    'A2': 3,
-
-    'M3': 4,
-    'd4': 4,
-
-    'P4': 5,
-    'A3': 5,
-
-    'TT': 6,
-    'A4': 6,
-    'd5': 6,
-
-    'P5': 7,
-    'd6': 7,
-
-    'm6': 8,
-    'A5': 8,
-
-    'M6': 9,
-    'd7': 9,
-
-    'm7': 10,
-    'A6': 10,
-
-    'M7': 11,
-    'd8': 11,
-
-    'P8': 12,
-    'A7': 12,
-    'd9': 12,
-
-    'm9': 13,
-    'A8': 13,
-
-    'M9': 14,
-    'd10': 14,
-
-    'm10': 15,
-    'A9': 15,
-
-    'M10': 16,
-    'd11': 16,
-
-    'P11': 17,
-    'A10': 17,
-
-    'A11': 18,
-    'd12': 18,
-
-    'P12': 19,
-    'd13': 19,
-
-    'm13': 20,
-    'A12': 20,
-
-    'M13': 21,
-    'd14': 21,
-
-    'm14': 22,
-    'A13': 22,
-
-    'M14': 23,
-    'd15': 23,
-
-    'P15': 24,
-    'A14': 24,
-
-    'A15': 25,
-};
-
 let notes = [
   'C',
   'C#/Db',
@@ -143,20 +144,6 @@ let notes = [
   'A#/Bb',
   'B',
 ];
-
-const keys = notes.flatMap(note => note.split('/'));
-
-let naturals = notes.filter(note => {return !note.includes('/')})
-
-const scaleDegrees = {
-    '1': 0,
-    '2': 2,
-    '3': 4,
-    '4': 5,
-    '5': 7,
-    '6': 9,
-    '7': 11,
-};
 
 const scales = [
   {
@@ -285,9 +272,106 @@ const scales = [
   },
 ];
 
+const intervals = {
+    'R': 0,
+    'P1': 0,
+    'd2': 0,
+
+    'm2': 1,
+    'A1': 1,
+
+    'M2': 2,
+    'd3': 2,
+
+    'm3': 3,
+    'A2': 3,
+
+    'M3': 4,
+    'd4': 4,
+
+    'P4': 5,
+    'A3': 5,
+
+    'TT': 6,
+    'A4': 6,
+    'd5': 6,
+
+    'P5': 7,
+    'd6': 7,
+
+    'm6': 8,
+    'A5': 8,
+
+    'M6': 9,
+    'd7': 9,
+
+    'm7': 10,
+    'A6': 10,
+
+    'M7': 11,
+    'd8': 11,
+
+    'P8': 12,
+    'A7': 12,
+    'd9': 12,
+
+    'm9': 13,
+    'A8': 13,
+
+    'M9': 14,
+    'd10': 14,
+
+    'm10': 15,
+    'A9': 15,
+
+    'M10': 16,
+    'd11': 16,
+
+    'P11': 17,
+    'A10': 17,
+
+    'A11': 18,
+    'd12': 18,
+
+    'P12': 19,
+    'd13': 19,
+
+    'm13': 20,
+    'A12': 20,
+
+    'M13': 21,
+    'd14': 21,
+
+    'm14': 22,
+    'A13': 22,
+
+    'M14': 23,
+    'd15': 23,
+
+    'P15': 24,
+    'A14': 24,
+
+    'A15': 25,
+};
+
+const keys = notes.flatMap(note => note.split('/'));
+
+let naturals = notes.filter(note => {return !note.includes('/')});
+
+const scaleDegrees = {
+    '1': 0,
+    '2': 2,
+    '3': 4,
+    '4': 5,
+    '5': 7,
+    '6': 9,
+    '7': 11,
+};
+
 const instrumentSelect = document.getElementById('instrumentSelect');
 const keySelect = document.getElementById('keySelect');
 const scaleSelect = document.getElementById('scaleSelect');
+const chordSelect = document.getElementById('chordSelect');
 
 function degreeToSemitones(degree) {
   match = degree.match(/^(\D*)(\d+)$/);
@@ -299,12 +383,70 @@ function degreeToSemitones(degree) {
   return semi;
 }
 
+function intervalToDegree(interval) {
+  [quality, degree] = interval.split('');
+  switch(quality) {
+    case 'R':
+      degree = '1';
+      break;
+    case 'A':
+      degree += '#';
+      break;
+    case 'm':
+      degree += 'b';
+      break;
+    case 'd':
+      degree += 'bb';
+      break;
+  }
+  return degree;
+}
+
+function degreeToInterval(degree) {
+  [acc, number] = [degree.slice(0, -1), degree.slice(-1)];
+  let interval = '';
+  switch(acc) {
+    case '':
+      if (['1', '4', '5', '8'].includes(number)) {
+        interval = 'P';
+      } else {
+        interval = 'M';
+      }
+      break;
+    case '#':
+      interval = 'A';
+      break;
+    case 'b':
+      interval = 'm';
+      break;
+    case 'bb':
+      interval = 'd';
+      break;
+  }
+  return interval + number;
+}
+
 function draw() {
   ctx.textAlign = 'center';
   ctx.textBaseline = 'middle';
   ctx.fillStyle = 'black';
   ctx.fillRect(0, 0, canvas.width, canvas.height);
-  let scale = getScaleNotes(scaleSelect.value, true);
+
+
+  let degrees, intervals, scale;
+  if (scaleSelect.value) {
+    degrees = scaleSelect.value.split('-');
+    intervals = degrees.map(degree => {
+      return degreeToInterval(degree);
+    });
+    scale = getScaleNotes(scaleSelect.value, true);
+  } else {
+    intervals = chordSelect.value.split('-');
+    degrees = intervals.map(interval => {
+      return intervalToDegree(interval);
+    });
+    scale = getChordNotes(intervals, true);
+  }
 
   strings.forEach((row, i) => {
     let offset = notes.findIndex(note => {
@@ -319,13 +461,36 @@ function draw() {
       if (note == scale[0]) ctx.fillStyle = 'orange';
       else if (note) ctx.fillStyle = 'lightblue';
 
-      if (note && drawMode == 'degrees') note = scale.indexOf(note) + 1;
-      else if (drawMode == 'allNotes') note = notes[(offset+j)%12];
+      let text = '';
+      if (note && drawMode == 'degrees') text = degrees[scale.indexOf(note)];//scale.indexOf(note) + 1;
+      if (note && drawMode == 'intervals') text = intervals[scale.indexOf(note)];
+      else if (drawMode == 'allNotes') text = notes[(offset+j)%12];
 
       ctx.fillRect(1+j*40, 1+i*40, 39, 39);
       ctx.fillStyle = 'black';
-      ctx.fillText(note, 20+j*40, 21+i*40);
+      ctx.fillText(text, 20+j*40, 21+i*40);
     }
+  });
+}
+
+function getChordNotes(chordIntervals, translate) {
+  return chordIntervals.map(function(interval){
+    let note = notes[intervals[interval]]
+    let acc = notes.indexOf(note) - intervals[interval];
+    if (translate) {
+      note = notes[(notes.indexOf(note) - acc + 12)%12];
+      if (note.length > 2) note = note.split('/')[Math.max(Math.sign(acc), 0)];
+      return note;
+    }
+    while (acc > 0) {
+      note += 'b';
+      acc--;
+    }
+    while (acc < 0) {
+      note += '#';
+      acc++;
+    }
+    return note;
   });
 }
 
@@ -378,7 +543,15 @@ function changeKey() {
     draw();
 }
 
+function changeChord() {
+  scaleSelect.value = '';
+  drawMode = 'intervals';
+  draw();
+}
+
 function changeScale() {
+  chordSelect.value = '';
+  drawMode = 'degrees';
   draw();
 }
 
@@ -390,6 +563,15 @@ keys.forEach(key => {
     keySelect.appendChild(new Option(key, key));
 });
 
+chords.forEach(category => {
+  let optGroup = document.createElement('optgroup')
+  optGroup.setAttribute('label', category.name)
+  category.chords.forEach(chord => {
+    optGroup.appendChild(new Option(`${category.name} - ${chord.name}`, chord.spelling));
+  });
+  chordSelect.appendChild(optGroup);
+});
+
 scales.forEach(category => {
   let optGroup = document.createElement('optgroup')
   optGroup.setAttribute('label', category.name)
@@ -399,10 +581,11 @@ scales.forEach(category => {
   scaleSelect.appendChild(optGroup);
 });
 
-let drawMode = 'degrees';
+let drawMode;
 
 const canvas = document.getElementById('canvas');
 const ctx = canvas.getContext('2d');
 
 instrumentSelect.value = 'Linnstrument';
 changeInstrument();
+changeScale();
