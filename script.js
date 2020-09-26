@@ -97,6 +97,12 @@ const instruments = {
       'Standard': 'CGDA',
     },
   },
+  'Deluge': {
+    'frets': 16,
+    'tunings': {
+      'Standard': 'F#BEADGCF',
+    },
+  },
   'Guitar': {
     'frets': 25,
     'tunings': {
@@ -373,17 +379,17 @@ const keySelect = document.getElementById('keySelect');
 const scaleSelect = document.getElementById('scaleSelect');
 const chordSelect = document.getElementById('chordSelect');
 
-function degreeToSemitones(degree) {
+let degreeToSemitones = degree => {
   match = degree.match(/^(\D*)(\d+)$/);
   semi = scaleDegrees[match[2]];
-  match[1].split('').forEach(function(mod){
+  match[1].split('').forEach(mod => {
     if (mod == 'b') semi--;
     else if (mod == '#') semi++;
   });
   return semi;
 }
 
-function intervalToDegree(interval) {
+ let intervalToDegree = interval => {
   [quality, degree] = interval.split('');
   switch(quality) {
     case 'R':
@@ -402,7 +408,7 @@ function intervalToDegree(interval) {
   return degree;
 }
 
-function degreeToInterval(degree) {
+let degreeToInterval = degree => {
   [acc, number] = [degree.slice(0, -1), degree.slice(-1)];
   let interval = '';
   switch(acc) {
@@ -426,7 +432,7 @@ function degreeToInterval(degree) {
   return interval + number;
 }
 
-function draw() {
+let draw = () => {
   ctx.textAlign = 'center';
   ctx.textBaseline = 'middle';
   ctx.fillStyle = 'black';
@@ -473,7 +479,7 @@ function draw() {
   });
 }
 
-function getChordNotes(chordIntervals, translate) {
+let getChordNotes = (chordIntervals, translate) => {
   return chordIntervals.map(function(interval){
     let note = notes[intervals[interval]]
     let acc = notes.indexOf(note) - intervals[interval];
@@ -494,7 +500,7 @@ function getChordNotes(chordIntervals, translate) {
   });
 }
 
-function getScaleNotes(spelling, translate) {
+let getScaleNotes = (spelling, translate=true) => {
   return spelling.split('-').map(function(degree){
     let note = naturals[degree.split('').pop()-1];
     let acc = notes.indexOf(note) - degreeToSemitones(degree);
@@ -516,7 +522,7 @@ function getScaleNotes(spelling, translate) {
   });
 }
 
-function setRootNote(root) {
+let setRootNote = root => {
   notes.push(...notes.splice(0, notes.findIndex(note => {
     if (root.length == 1) return note == root;
     else return note.includes(root);
@@ -526,30 +532,30 @@ function setRootNote(root) {
   })));
 }
 
-function setInstrument(name) {
+let setInstrument = name => {
   instrument = instruments[name];
   strings = instrument.tunings['Standard'].match(/[A-Z](?:#|b)?/g).reverse();
   canvas.width = 1+instrument.frets*40;
   canvas.height = 1+strings.length*40;
 }
 
-function changeInstrument() {
+let changeInstrument = () => {
   setInstrument(instrumentSelect.value);
   draw();
 }
 
-function changeKey() {
+let changeKey = () => {
     setRootNote(keySelect.value);
     draw();
 }
 
-function changeChord() {
+let changeChord = () => {
   scaleSelect.value = '';
   drawMode = 'intervals';
   draw();
 }
 
-function changeScale() {
+let changeScale = () => {
   chordSelect.value = '';
   drawMode = 'degrees';
   draw();
