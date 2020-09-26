@@ -592,6 +592,14 @@ let drawMode;
 const canvas = document.getElementById('canvas');
 const ctx = canvas.getContext('2d');
 
-instrumentSelect.value = 'Linnstrument';
+const params = new URLSearchParams(window.location.search);
+const paramsObj = Array.from(params.keys()).reduce(
+  (acc, val) => ({ ...acc, [val]: params.get(val) }),
+  {}
+);
+
+instrumentSelect.value = paramsObj.instrument || 'Linnstrument';
+keySelect.value = paramsObj.key || 'C';
 changeInstrument();
+changeKey();
 changeScale();
