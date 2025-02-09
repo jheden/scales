@@ -186,39 +186,6 @@ const scales = [
     ],
   },
   {
-    'name': 'Harmonic Minor',
-    'scales': [
-      {
-        'name': 'Aeolian 7',
-        'spelling': '1-2-b3-4-5-b6-7',
-      },
-      {
-        'name': 'Locrian 6',
-        'spelling': '1-b2-b3-4-b5-6-b7',
-      },
-      {
-        'name': 'Ionian #5',
-        'spelling': '1-2-3-4-#5-6-7',
-      },
-      {
-        'name': 'Dorian #4',
-        'spelling': '1-2-b3-#4-5-6-b7',
-      },
-      {
-        'name': 'Phrygian 3',
-        'spelling': '1-b2-3-4-5-b6-b7',
-      },
-      {
-        'name': 'Lydian #2',
-        'spelling': '1-#2-3-#4-5-6-7',
-      },
-      {
-        'name': 'Locrian b4 bb7',
-        'spelling': '1-b2-b3-b4-b5-b6-bb7',
-      },
-    ],
-  },
-  {
     'name': 'Melodic Minor',
     'scales': [
       {
@@ -252,6 +219,105 @@ const scales = [
     ],
   },
   {
+    'name': 'Harmonic Major',
+    'scales': [
+      {
+        'name': 'Ionian b6',
+        'spelling': '1-2-3-4-5-b6-7',
+      },
+      {
+        'name': 'Dorian b5',
+        'spelling': '1-2-b3-4-b5-6-b7',
+      },
+      {
+        'name': 'Phrygian b4',
+        'spelling': '1-b2-b3-b4-5-b6-b7',
+      },
+      {
+        'name': 'Lydian b3',
+        'spelling': '1-2-b3-#4-5-6-7',
+      },
+      {
+        'name': 'Mixolydian b2',
+        'spelling': '1-b2-3-4-5-6-b7',
+      },
+      {
+        'name': 'Lydian Augmented #2',
+        'spelling': '1-#2-3-#4-#5-6-7',
+      },
+      {
+        'name': 'Locrian bb7',
+        'spelling': '1-b2-b3-4-b5-b6-bb7',
+      },
+    ],
+  },
+  {
+    'name': 'Harmonic Minor',
+    'scales': [
+      {
+        'name': 'Aeolian 7',
+        'spelling': '1-2-b3-4-5-b6-7',
+      },
+      {
+        'name': 'Locrian 6',
+        'spelling': '1-b2-b3-4-b5-6-b7',
+      },
+      {
+        'name': 'Ionian #5',
+        'spelling': '1-2-3-4-#5-6-7',
+      },
+      {
+        'name': 'Dorian #4',
+        'spelling': '1-2-b3-#4-5-6-b7',
+      },
+      {
+        'name': 'Phrygian 3',
+        'spelling': '1-b2-3-4-5-b6-b7',
+      },
+      {
+        'name': 'Lydian #2',
+        'spelling': '1-#2-3-#4-5-6-7',
+      },
+      {
+        'name': 'Locrian b4 bb7',
+        'spelling': '1-b2-b3-b4-b5-b6-bb7',
+      },
+    ],
+  },
+  {
+    'name': 'Double Harmonic',
+    'scales': [
+      {
+        'name': 'Double Harmonic Major',
+        'spelling': '1-b2-3-4-5-b6-7',
+      },
+      {
+        'name': 'Lydian #2 #6',
+        'spelling': '1-#2-3-#4-5-#6-7',
+      },
+      {
+        'name': 'Ultraphrygian',
+        'spelling': '1-b2-b3-b4-5-b6-bb7',
+      },
+      {
+        'name': 'Hungarian minor',
+        'spelling': '1-2-b3-#4-5-b6-7',
+      },
+      {
+        'name': 'Oriental',
+        'spelling': '1-b2-3-4-b5-6-b7',
+      },
+      {
+        'name': 'Ionian #2 #5',
+        'spelling': '1-#2-3-4-#5-6-7',
+      },
+      {
+        'name': 'Locrian bb3 bb7',
+        'spelling': '1-b2-bb3-4-b5-b6-bb7',
+      },
+    ],
+  },
+  {
     'name': 'Blues',
     'scales': [
       {
@@ -273,6 +339,47 @@ const scales = [
       {
         'name': "Rock'n'Roll",
         'spelling': '1-2-b3-3-4-b5-5-6-b7',
+      },
+      {
+        'name': 'Voodoo Blues',
+        'spelling': '1-b3-4-b5-6-7',
+      },
+    ],
+  },
+  {
+    'name': 'Pentatonic',
+    'scales': [
+      {
+        'name': 'Major',
+        'spelling': '1-2-3-5-6',
+      },
+      {
+        'name': 'Suspended',
+        'spelling': '1-2-4-5-b7',
+      },
+      {
+        'name': 'Blues Minor',
+        'spelling': '1-b3-4-b6-b7',
+      },
+      {
+        'name': 'Blues Major',
+        'spelling': '1-2-4-5-6',
+      },
+      {
+        'name': 'Minor',
+        'spelling': '1-b3-4-5-b7',
+      },
+      {
+        'name': 'Dominant',
+        'spelling': '1-2-3-5-b7',
+      },
+      {
+        'name': 'Dorian',
+        'spelling': '1-2-b3-5-6',
+      },
+      {
+        'name': 'Altered',
+        'spelling': '1-b2-3-5-b7',
       },
     ],
   },
